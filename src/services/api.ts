@@ -1,15 +1,33 @@
 const API_URL = process.env.REACT_APP_API_URL || ""
 
-export const requestAPIPOST = async (token: string, body: object) => {
- const request = await fetch(API_URL, {
+interface Credentials {
+  email: string;
+  password: string;
+}
+
+export const loginRequest = async (body: Credentials) => {
+  const response = await fetch(`${API_URL}/login`, {
     method: "POST",
     headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(body)
+  })
+
+  return await response
+}
+
+export const requestAPIPOST = async (path: string, token: string, body: object) => {
+  const response = await fetch(API_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
       "X-ACCESS-TOKEN": token
     },
-   body: JSON.stringify(body)
- })
+    body: JSON.stringify(body)
+  })
 
-  return await request
+  return await response
 }
 
 export const requestAPIGET = async (token: string, queryParams?: object) => {
@@ -21,25 +39,25 @@ export const requestAPIGET = async (token: string, queryParams?: object) => {
 }
 
 const doGetWithParams = async (token: string, url: string) => {
-  const request = await fetch(url, {
+  const response = await fetch(url, {
     method: "GET",
     headers: {
       "X-ACCESS-TOKEN": token
     }
   })
 
-  return await request
+  return await response
 }
 
 const doGetWithoutParams = async (token: string, url: string) => {
-  const request = await fetch(url, {
+  const response = await fetch(url, {
     method: "GET",
     headers: {
       "X-ACCESS-TOKEN": token
     }
   })
 
-  return await request  
+  return await response 
 }
 
 const buildURLwithQueryParams = (url: string, qp: object) => {

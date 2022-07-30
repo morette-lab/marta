@@ -1,0 +1,14 @@
+.registration-brand {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #040F0F;
+}
+
+.registration-brand-card {
+    padding: 60px 30px;
+    border-radius: 10px;
+    background-color: #F5F0F6;
+}

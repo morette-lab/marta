@@ -4,6 +4,8 @@ function Home() {
   return (
     <div>
       <Link to="/user-registration">Cadastro de usuário</Link>
+      <br />
+      <Link to="/register-brand">Cadastrar marca</Link>
     </div>
   )
 }
